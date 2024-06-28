@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time and Date Display</title>
+  <style>
+    button {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body style="background-color: rgb(243, 145, 152);">
+  <button id="timeButton" style="margin-top: 20px;">Show Time</button>
+  <p id="output1"></p>
+  <button id="dateButton">Show Date</button>
+  <p id="output2"></p>
+
+  <script>
+    function showTime() {
+    const currentTime = new Date();
+    const utcTime = currentTime.getTime() + currentTime.getTimezoneOffset() * 60000;
+    const istOffset = 5.5 * 60 * 60000; // IST offset in milliseconds
+    const istTime = new Date(utcTime + istOffset);
+
+    const gmtString = istTime.toGMTString();
+
+    const timeZoneOffsetMinutes = Math.abs(currentTime.getTimezoneOffset());
+    const timeZoneOffsetHours = Math.floor(timeZoneOffsetMinutes / 60);
+    const timeZoneOffsetMinutesRemainder = timeZoneOffsetMinutes % 60;
+
+    const timeZoneAbbreviation = "+05:30";
+
+    document.getElementById('output1').textContent = `GMT: ${gmtString} (${timeZoneAbbreviation})`;
+}
+
+
+    function showDate() {
+      const currentDate = new Date();
+      const dateString = currentDate.toLocaleDateString();
+      document.getElementById('output2').textContent = `Current Date: ${dateString}`;
+    }
+
+    document.getElementById('timeButton').addEventListener('click', showTime);
+    document.getElementById('dateButton').addEventListener('click', showDate);
+  </script>
+
+</body>
+
+</html>

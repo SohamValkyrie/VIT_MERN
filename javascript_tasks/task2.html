@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sort String Alphabetically</title>
+  <script>
+    function sortStringAlphabetically() {
+      // Get the input string from the user
+      const inputString = document.getElementById('inputString').value;
+
+      // Sort the string 
+      const sortedString = inputString.split('').sort().join('');
+
+      // Display the sorted string on the webpage
+      document.getElementById('result').innerHTML = `Sorted String: ${sortedString}`;
+    }
+  </script>
+</head>
+<body style="background-color: rgb(40, 133, 60);">
+  <div style="text-align: center; padding: 20px;">
+    <h2 style="font-size: 35px;">Sort String Alphabetically</h2>
+    <input type="text" id="inputString" placeholder="Enter a string" style="height: 25px; width: 30%;font-size: 18px;">
+    <button onclick="sortStringAlphabetically()" style="height: 30px; width: 5%; font-size: 15px;">Sort</button>
+    <p id="result" style="font-size: 20px;"></p>
+  </div>
+</body>
+</html>

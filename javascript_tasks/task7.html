@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Animation Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #train {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20%;
+            animation: moveTrain 5s linear infinite;
+        }
+
+        @keyframes moveTrain {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        #startBtn, #stopBtn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body style="background-color: blanchedalmond; margin-left: 20px;">
+    <img id="train" src="../images/train.jpeg" alt="Train">
+    <button id="startBtn" style="height: 40px;width: 70px;font-size: 20px;">Start</button>
+    <button id="stopBtn" style="height: 40px;width: 70px;font-size: 20px;">Stop</button>
+
+    <script>
+        const train = document.getElementById('train');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        let animationStopped = false;
+
+        startBtn.addEventListener('click', () => {
+            if (animationStopped) {
+                train.style.animationPlayState = 'running';
+                animationStopped = false;
+            }
+        });
+
+        stopBtn.addEventListener('click', () => {
+            train.style.animationPlayState = 'paused';
+            animationStopped = true;
+        });
+    </script>
+</body>
+</html>
